@@ -1,2 +1,2 @@
-SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:root@127.0.0.1:3306/flask"
+SQLALCHEMY_DATABASE_URI = "mysql://username:password@server/db"
 SQLALCHEMY_TRACK_MODIFICATIONS = False
