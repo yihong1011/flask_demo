@@ -10,3 +10,15 @@ def _create(username, email):
     db.session.add(user)
     db.session.commit()
     return
+
+def _update(id, email):
+    user = User.query.filter_by(id=id).first()
+    user.email = email
+    db.session.commit()
+    return
+
+def _destroy(id):
+    user = User.query.filter_by(id=id).first()
+    db.session.delete(user)
+    db.session.commit()
+    return

@@ -1,5 +1,6 @@
 from app import app
 from app.views.user import views
+from flask import url_for
 
 @app.route("/",methods=["GET"])
 def index():
@@ -13,6 +14,21 @@ def new():
 def create():
     return views.create()
 
+@app.route("/<int:id>", methods=["GET"])
+def show(id):
+    return views.show(id)
+
 @app.route("/<int:id>/edit",methods=["GET"])
 def edit(id):
-    return views.edit(id)
+    url_delete = url_for("destroy", id=id)
+    return views.edit(id, url_delete=url_delete)
+
+@app.route("/<int:id>/update",methods=["POST"])
+def update(id):
+    views.update(id)
+    return "User Update Successful!"
+
+@app.route("/<int:id>/delete",methods=["POST"])
+def destroy(id):
+    views.destroy(id)
+    return "User Deleted!"
